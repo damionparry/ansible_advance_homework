@@ -6,7 +6,7 @@ osp_instances:
       group: apps
       deployment_name: QA
     flavor: m2.small
-    key_name: ansible_ssh
+    key_name: openstack_key
     nics:
         - net-name: int_network
     image: rhel-guest
@@ -18,7 +18,7 @@ osp_instances:
       group: apps
       deployment_name: QA
     flavor: m2.small
-    key_name: ansible_ssh
+    key_name: openstack_key
     nics:
         - net-name: int_network
     image: rhel-guest
@@ -30,7 +30,7 @@ osp_instances:
       group: database
       deployment_name: QA
     flavor: m2.small
-    key_name: ansible_ssh
+    key_name: openstack_key
     nics:
         - net-name: int_network
     image: rhel-guest
@@ -42,7 +42,7 @@ osp_instances:
       group: frontend
       deployment_name: QA
     flavor: m2.small
-    key_name: ansible_ssh
+    key_name: openstack_key
     nics:
         - net-name: int_network
     image: rhel-guest

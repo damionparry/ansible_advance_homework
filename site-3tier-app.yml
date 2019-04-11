@@ -4,30 +4,39 @@
   - name: osp-facts
 
 # Setup front-end load balancer tier
-
-
 - name: setup load-balancer tier
-  hosts: frontends
+  hosts: frontend
   become: yes
-  roles:
-    - {name: base-config, tags: base-config}
-    - {name: lb-tier, tags: [lbs, haproxy]}
+  tasks:
+    - name: print stuff
+      debug:
+        var: hostvars
+    - name:  ping
+      ping:
+#  roles:
+#    - {name: base-config, tags: base-config}
+#    - {name: lb-tier, tags: [lbs, haproxy]}
 
 # Setup application servers tier
 
 - name: setup app tier
   hosts: apps
   become: yes
-  gather_facts: false
-  roles:
-    - {name: base-config, tags: base-config}
-    - {name: app-tier, tags: [apps, tomcat]}
+  tasks:
+    - name: ping
+      ping:
+#  roles:
+#    - {name: base-config, tags: base-config}
+#    - {name: app-tier, tags: [apps, tomcat]}
 
 # Setup database tier
 
 - name: setup database tier
   become: yes
-  hosts: appdbs
-  roles:
-    - {name: base-config, tags: base-config}
-    - {name: db-tier, tags: [dbs, postgres]}
+  hosts: database
+  tasks:
+    - name: ping 
+      ping:
+#  roles:
+#    - {name: base-config, tags: base-config}
+#    - {name: db-tier, tags: [dbs, postgres]}
