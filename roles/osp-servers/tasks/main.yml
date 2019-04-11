@@ -21,18 +21,16 @@
     timeout: 180
     reuse: yes
   with_items: "{{ osp_instances }}"
+  register: osp_servers_floating_ip
+
+- name: Debug print what we got back from the floating ip assignment
+  debug:
+    msg: "{{ osp_servers_floating_ip.results }}"
+    verbosity: 2
 
 - name: Wait for server to be available
   wait_for:
-    host: "{{ item.name }}"
+    host: "{{ item.floating_ip.floating_ip_address }}"
     port: 22
-    delay: 180
-    state: open
-  with_items: "{{ osp_instances }}"
-
-- name: Add extra keys
-  authorized_key:
-    user: root
-    key: '{{ item }}'
-    state: present
-  with_file: "{{ osp_keys }}"
+    state: started
+  with_items: "{{ osp_servers_floating_ip.results }}"

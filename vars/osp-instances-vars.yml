@@ -35,7 +35,7 @@ osp_instances:
         - net-name: int_network
     image: rhel-guest
     security_groups: 
-      - appdbs
+      - db
     external_network: ext_network
   - name: frontend
     meta: 
