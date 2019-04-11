@@ -8,35 +8,22 @@
   hosts: frontend
   become: yes
   tasks:
-    - name: print stuff
-      debug:
-        var: hostvars
-    - name:  ping
-      ping:
-#  roles:
-#    - {name: base-config, tags: base-config}
-#    - {name: lb-tier, tags: [lbs, haproxy]}
+  roles:
+    - {name: base-config, tags: base-config}
+    - {name: lb-tier, tags: [lbs, haproxy]}
 
 # Setup application servers tier
-
 - name: setup app tier
   hosts: apps
   become: yes
-  tasks:
-    - name: ping
-      ping:
-#  roles:
-#    - {name: base-config, tags: base-config}
-#    - {name: app-tier, tags: [apps, tomcat]}
+  roles:
+    - {name: base-config, tags: base-config}
+    - {name: app-tier, tags: [apps, tomcat]}
 
 # Setup database tier
-
 - name: setup database tier
   become: yes
   hosts: database
-  tasks:
-    - name: ping 
-      ping:
-#  roles:
-#    - {name: base-config, tags: base-config}
-#    - {name: db-tier, tags: [dbs, postgres]}
+  roles:
+    - {name: base-config, tags: base-config}
+    - {name: db-tier, tags: [dbs, postgres]}
