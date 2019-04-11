@@ -1,0 +1,55 @@
+---
+# Variables defining the openstack instances:
+osp_instances:
+  - name: app1
+    meta: 
+      group: apps
+      deployment_name: QA
+    flavor: m2.small
+    key_name: ansible_ssh
+    nics:
+        - net-name: int_network
+    image: rhel-guest
+    security_groups: 
+      - apps
+    external_network: ext_network
+  - name: app2
+    meta: 
+      group: apps
+      deployment_name: QA
+    flavor: m2.small
+    key_name: ansible_ssh
+    nics:
+        - net-name: int_network
+    image: rhel-guest
+    security_groups: 
+      - apps
+    external_network: ext_network
+  - name: database
+    meta: 
+      group: database
+      deployment_name: QA
+    flavor: m2.small
+    key_name: ansible_ssh
+    nics:
+        - net-name: int_network
+    image: rhel-guest
+    security_groups: 
+      - appdbs
+    external_network: ext_network
+  - name: frontend
+    meta: 
+      group: frontend
+      deployment_name: QA
+    flavor: m2.small
+    key_name: ansible_ssh
+    nics:
+        - net-name: int_network
+    image: rhel-guest
+    security_groups: 
+      - frontend
+    external_network: ext_network
+
+osp_keys:
+  - openstack.pem
+  - openstack.pub
