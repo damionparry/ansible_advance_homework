@@ -2,6 +2,7 @@
 - name: Create Homework Assignment project 
   tower_project:
     name: "{{ proj_name }}"
+    tower_verify_ssl: no
     state: present
 
 - name: Machine Credentail to connect to workstation using openstack.pub
