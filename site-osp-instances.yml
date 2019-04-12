@@ -1,4 +1,4 @@
-- hosts: workstation
+- hosts: localhost
   remote_user: cloud-user
   become: yes
   vars_files: vars/osp-instances-vars.yml
