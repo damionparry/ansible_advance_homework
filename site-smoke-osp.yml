@@ -1,4 +1,4 @@
-- hosts: workstation
+- hosts: jumpbox
   gather_facts: false
   tasks:
   - name: OpenStack servers
@@ -8,10 +8,15 @@
     register: openstack_info
     tags:
       - osp.smoke
-  - name: Curl website
-
+  - name: print out the openstack_info var
+    debug:
+      var: openstack_info
+      verbosity: 2
   - name: Fail if 'Ansible has done its job' is not in the page content
-    fail:
-    when: "'Ansible has done its job' not in webpage.results[0].content"
+    uri:
+      url: "http://{{ openstack_info.ansible_facts.openstack_servers[0].interface_ip }}"
+      return_content: yes
+    register: data
+    failed_when: "'Ansible has done its job' not in data.content"
     tags:
       - osp.smoke

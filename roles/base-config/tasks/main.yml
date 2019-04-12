@@ -1,2 +1,18 @@
 ---
 # tasks file for base-config
+- name: copy over the local repo
+  get_url:
+    url: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+    dest: /etc/yum.repos.d/internal.repo
+
+- name: add the openstack PEM key
+  copy:
+    src: openstack.pem
+    dest: /root/.ssh/openstack.pem
+    mode: '600'
+
+- name: ensure the openstack PUB key is present
+  authorized_key:
+    user: cloud-user
+    state: present
+    key: "{{ lookup('file', 'openstack.pub') }}"
