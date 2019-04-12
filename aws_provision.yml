@@ -1,5 +1,6 @@
 ---
 - hosts: workstation
+  remote_user: cloud-user
   become: true
   gather_facts: false
   tasks:
