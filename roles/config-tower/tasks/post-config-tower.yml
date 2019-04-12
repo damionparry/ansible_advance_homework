@@ -4,9 +4,12 @@
     name: "{{ proj_name }}"
     tower_verify_ssl: no
     state: present
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
+    tower_host: "tower1.{{tower_GUID}}.example.opentlc.com"
     tower_username: admin
     tower_password: r3dh4t1!
+    scm_type: git
+    scm_update_on_launch: yes
+    scm_url: "{{ github_repo }}"
 
 - name: Machine Credential to connect to workstation using openstack.pub
   tower_credential:
