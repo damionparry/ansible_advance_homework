@@ -8,7 +8,7 @@
     tower_username: admin
     tower_password: r3dh4t1!
 
-- name: Machine Credentail to connect to workstation using openstack.pub
+- name: Machine Credential to connect to workstation using openstack.pub
   tower_credential:
     name: Connect_to_workstation
     organization: Default
@@ -19,6 +19,7 @@
     tower_password: r3dh4t1!
     ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
+    tower_verify_ssl: no
 
 - name: Create Inventory
   command: |
