@@ -4,6 +4,8 @@
   get_url:
     url: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
     dest: /etc/yum.repos.d/internal.repo
+  ignore_errors: true
+  when: groups.QA
 
 - name: add the openstack PEM key
   copy:
@@ -17,6 +19,7 @@
     state: present
     key: "{{ lookup('file', 'openstack.pub') }}"
   ignore_errors: true
+  when: groups.QA
 
 - name: add the openstack PUB key for ec2-user
   authorized_key:
@@ -24,3 +27,4 @@
     state: present
     key: "{{ lookup('file', 'openstack.pub') }}"
   ignore_errors: true
+  when: groups.ec2
