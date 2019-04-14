@@ -7,7 +7,7 @@
       verbosity: 2
   - name: Fail if 'Ansible has done its job' is not in the page content
     uri:
-      url: "http://{{ ansible_facts.ansible_default_ipv4.address }}"
+      url: "http://{{ ansible_hostname }}"
       return_content: yes
     register: data
     failed_when: "'Ansible has done its job' not in data.content"
