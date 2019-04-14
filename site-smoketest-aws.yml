@@ -2,4 +2,8 @@
   gather_facts: false
   tasks:
   - name: Use Uri module for wrting smoke test.
+    debug:
+      var: ansible_facts
   - name: Fail if 'Ansible has done its job' is not in the page content
+    debug:
+      msg: "placeholder to make the things green"
