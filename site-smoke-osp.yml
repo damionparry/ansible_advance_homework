@@ -6,7 +6,7 @@
   - name: OpenStack servers
     os_server_facts:
      cloud: ospcloud
-     server: 'frontends'
+     server: 'frontend'
     register: openstack_info
     tags:
       - osp.smoke
