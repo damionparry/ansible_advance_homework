@@ -27,7 +27,7 @@ osp_instances:
     external_network: ext_network
   - name: database
     meta: 
-      group: database
+      group: appsdb
       deployment_name: QA
     flavor: m2.small
     key_name: openstack_key
@@ -39,7 +39,7 @@ osp_instances:
     external_network: ext_network
   - name: frontend
     meta: 
-      group: frontend
+      group: frontends
       deployment_name: QA
     flavor: m2.small
     key_name: openstack_key

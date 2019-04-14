@@ -1,4 +1,4 @@
-- hosts: jumpbox
+- hosts: workstation
   remote_user: cloud-user
   become: yes
   gather_facts: false
@@ -6,7 +6,7 @@
   - name: OpenStack servers
     os_server_facts:
      cloud: ospcloud
-     server: 'frontend'
+     server: 'frontends'
     register: openstack_info
     tags:
       - osp.smoke

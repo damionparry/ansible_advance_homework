@@ -11,8 +11,16 @@
     dest: /root/.ssh/openstack.pem
     mode: '600'
 
-- name: ensure the openstack PUB key is present
+- name: add the openstack PUB key for cloud-user
   authorized_key:
     user: cloud-user
     state: present
     key: "{{ lookup('file', 'openstack.pub') }}"
+  ignore_errors: true
+
+- name: add the openstack PUB key for ec2-user
+  authorized_key:
+    user: ec2-user
+    state: present
+    key: "{{ lookup('file', 'openstack.pub') }}"
+  ignore_errors: true
