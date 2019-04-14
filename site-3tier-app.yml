@@ -1,5 +1,4 @@
 - hosts: jumpbox
-  remote_user: cloud-user
   gather_facts: true
   roles:
   - name: osp-facts
