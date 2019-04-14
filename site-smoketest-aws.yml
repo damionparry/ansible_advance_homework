@@ -1,9 +1,13 @@
 - hosts: frontends
-  gather_facts: false
+  gather_facts: true
   tasks:
   - name: Use Uri module for wrting smoke test.
     debug:
       var: ansible_facts
+      verbosity: 2
   - name: Fail if 'Ansible has done its job' is not in the page content
-    debug:
-      msg: "placeholder to make the things green"
+    uri:
+      url: "http://{{ ansible_facts.ansible_default_ipv4.address }}"
+      return_content: yes
+    register: data
+    failed_when: "'Ansible has done its job' not in data.content"
